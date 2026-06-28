@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -28,11 +29,28 @@ export function Contact() {
     resolver: zodResolver(contactSchema),
   });
 
+  const [serverError, setServerError] = useState<string | null>(null);
+
   const onSubmit = async (data: ContactForm) => {
-    // Здесь будет отправка в Telegram Bot API (добавим позже)
-    console.log("Form data:", data);
-    await new Promise((r) => setTimeout(r, 1000));
-    reset();
+    setServerError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        setServerError(result.error || "Ошибка отправки");
+        return;
+      }
+
+      reset();
+    } catch {
+      setServerError("Ошибка соединения");
+    }
   };
 
   return (
@@ -97,7 +115,11 @@ export function Contact() {
             )}
           </Button>
 
-          {isSubmitSuccessful && (
+          {serverError && (
+            <p className="text-center text-sm text-red-400">{serverError}</p>
+          )}
+
+          {isSubmitSuccessful && !serverError && (
             <p className="text-center text-sm text-green-400">
               Спасибо! Я свяжусь с вами в ближайшее время.
             </p>
