@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import { Preloader } from "@/components/layout/preloader";
 import { ScrollToTop } from "@/components/layout/scroll-to-top";
+import { FloatingTelegram } from "@/components/layout/floating-telegram";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { JsonLd } from "@/components/layout/json-ld";
 import "./globals.css";
@@ -42,9 +44,11 @@ export default function RootLayout({
       className={`${inter.variable} ${manrope.variable}`}
     >
       <body className="min-h-screen bg-dark text-light antialiased font-sans">
+        <Preloader />
         <JsonLd />
         {children}
         <ScrollToTop />
+        <FloatingTelegram />
         <CookieBanner />
       </body>
     </html>
