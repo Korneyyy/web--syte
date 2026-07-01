@@ -144,6 +144,15 @@ export default function Starfield() {
     container.appendChild(renderer.domElement)
     camera.position.z = 0
 
+    // Фон — вращающаяся сфера с текстурой
+    const bgTex = new THREE.TextureLoader().load("/space-bg.jpg")
+    bgTex.wrapS = bgTex.wrapT = THREE.RepeatWrapping
+    bgTex.repeat.set(1, 1)
+    const bgGeo = new THREE.SphereGeometry(500, 48, 48)
+    const bgMat = new THREE.MeshBasicMaterial({ map: bgTex, side: THREE.BackSide })
+    const bgMesh = new THREE.Mesh(bgGeo, bgMat)
+    scene.add(bgMesh)
+
     const tex = createTexture(64)
     const streakTex = createStreakTexture()
     const glowTex = createTexture(128, true)
@@ -261,6 +270,10 @@ export default function Starfield() {
         const spr = s as any
         spr.material.opacity = 0.4 + 0.5 * (0.5 + 0.5 * Math.sin(t * spr._speed * 2 + spr._phase))
       }
+
+      // Фон — медленное вращение
+      bgMesh.rotation.y += dt * 0.015
+      bgMesh.rotation.x += dt * 0.005
 
       renderer.render(scene, camera)
     }
