@@ -6,6 +6,7 @@ import { FloatingTelegram } from "@/components/layout/floating-telegram";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { JsonLd } from "@/components/layout/json-ld";
 import "./globals.css";
+import Starfield from "@/components/layout/Starfield"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-dark text-light antialiased font-sans">
         <Preloader />
         <JsonLd />
+        <Starfield />
         {children}
         <ScrollToTop />
         <FloatingTelegram />
