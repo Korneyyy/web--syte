@@ -23,7 +23,7 @@ export function Hero() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[150px] hidden md:block" />
       </div>
 
-      <div className="relative z-10 w-full px-4 lg:pl-16 lg:pr-4 max-w-2xl mx-auto lg:mr-auto text-center lg:text-left">
+      <div className="relative z-10 w-full px-4 lg:pl-16 lg:pr-4 max-w-2xl mx-auto lg:ml-0 lg:mr-auto text-center lg:text-left">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
