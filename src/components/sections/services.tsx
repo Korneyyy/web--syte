@@ -13,7 +13,7 @@ import { services } from "@/data";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
   Layout,
   Building2,
   ShoppingCart,

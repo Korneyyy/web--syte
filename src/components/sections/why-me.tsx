@@ -12,7 +12,7 @@ import {
 import { whyMeCards } from "@/data";
 import { Section } from "@/components/ui/section";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
   Palette,
   Zap,
   Smartphone,

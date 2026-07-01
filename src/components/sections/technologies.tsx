@@ -17,7 +17,7 @@ import {
 import { technologies } from "@/data";
 import { Section } from "@/components/ui/section";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   FileCode,
   FileType,
   FileJson,
