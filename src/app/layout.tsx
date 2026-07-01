@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`${inter.variable} ${manrope.variable}`}
+      className={`${inter.variable} ${manrope.variable} overflow-x-hidden`}
     >
       <body className="min-h-screen bg-dark text-light antialiased font-sans overflow-x-hidden">
         <Preloader />
