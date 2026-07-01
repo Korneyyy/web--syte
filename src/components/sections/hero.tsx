@@ -18,9 +18,9 @@ export function Hero() {
       <ThreeScene />
       
       {/* Фоновые декоративные элементы */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[150px]" />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/20 rounded-full blur-[120px] hidden md:block" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[150px] hidden md:block" />
       </div>
 
       <div className="relative z-10 w-full px-4 lg:pl-16 lg:pr-4 max-w-2xl mx-auto lg:mr-auto text-center lg:text-left">

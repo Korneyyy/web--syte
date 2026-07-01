@@ -44,7 +44,7 @@ export default function RootLayout({
       lang="ru"
       className={`${inter.variable} ${manrope.variable}`}
     >
-      <body className="min-h-screen bg-dark text-light antialiased font-sans">
+      <body className="min-h-screen bg-dark text-light antialiased font-sans overflow-x-hidden">
         <Preloader />
         <JsonLd />
         <Starfield />
