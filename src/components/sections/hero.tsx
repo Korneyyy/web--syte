@@ -23,7 +23,7 @@ export function Hero() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[150px]" />
       </div>
 
-      <div className="relative z-10 w-full pl-4 md:pl-8 lg:pl-16 pr-4 max-w-2xl text-left mr-auto">
+      <div className="relative z-10 w-full px-4 lg:pl-16 lg:pr-4 max-w-2xl mx-auto lg:mr-auto text-center lg:text-left">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -50,7 +50,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-10 flex flex-wrap items-center justify-start gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-4"
         >
           <Button
             size="lg"
