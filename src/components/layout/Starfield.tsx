@@ -281,16 +281,5 @@ export default function Starfield() {
     }
   }, [])
 
-  return (
-    <div
-      ref={containerRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{
-        backgroundImage: 'url(/space-bg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    />
-  )
+  return <div ref={containerRef} className="fixed inset-0 pointer-events-none z-0" />
 }
