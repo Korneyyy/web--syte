@@ -6,10 +6,8 @@ import { FloatingTelegram } from "@/components/layout/floating-telegram";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { JsonLd } from "@/components/layout/json-ld";
 import "./globals.css";
-import dynamic from "next/dynamic"; 
 import Starfield from "@/components/layout/Starfield"
 
-const CosmicScene = dynamic(() => import("@/components/layout/cosmic/CosmicScene"))
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["cyrillic", "latin"],
@@ -49,7 +47,6 @@ export default function RootLayout({
       <body className="min-h-screen bg-dark text-light antialiased font-sans overflow-x-hidden">
         <Preloader />
         <JsonLd />
-        <CosmicScene />
         <Starfield />
         {children}
         <ScrollToTop />
