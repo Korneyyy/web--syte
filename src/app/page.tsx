@@ -17,13 +17,13 @@ export default function Home() {
       <main>
         <Hero />
         <WhyMe />
-        <Services />
+        <div className="bg-white/[0.015]"><Services /></div>
         <Process />
-        <Portfolio />
+        <div className="bg-white/[0.015]"><Portfolio /></div>
         <Technologies />
-        <Reviews />
+        <div className="bg-white/[0.015]"><Reviews /></div>
         <FaqSection />
-        <Contact />
+        <div className="bg-white/[0.015]"><Contact /></div>
       </main>
       <Footer />
     </>

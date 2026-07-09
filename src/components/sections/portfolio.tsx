@@ -25,9 +25,14 @@ export function Portfolio() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="group relative overflow-hidden rounded-2xl border border-white/10 bg-dark-light/50 aspect-video"
+            style={{
+              backgroundImage: `url(${item.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           >
-            {/* Placeholder-изображение */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
+            {/* Gradient overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent" />
 
             {/* Оверлей при hover */}
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-dark/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-6 text-center">

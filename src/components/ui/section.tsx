@@ -11,9 +11,10 @@ interface SectionProps {
   subtitle?: string;
   children: ReactNode;
   className?: string;
+  muted?: boolean;
 }
 
-export function Section({ id, title, subtitle, children, className }: SectionProps) {
+export function Section({ id, title, subtitle, children, className, muted }: SectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -21,7 +22,7 @@ export function Section({ id, title, subtitle, children, className }: SectionPro
     <section
       id={id}
       ref={ref}
-      className={cn("py-20 md:py-28", className)}
+      className={cn("py-20 md:py-28", muted && "bg-white/[0.015]", className)}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (

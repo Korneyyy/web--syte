@@ -44,7 +44,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "CloudStore",
     description: "Интернет-магазин цифровых товаров",
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
-    image: "/placeholder-1.jpg",
+    image: "/portfolio-1.webp",
     link: "#",
   },
   {
@@ -52,7 +52,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "TaskFlow",
     description: "Корпоративный таск-трекер",
     technologies: ["React", "Node.js", "MongoDB", "WebSocket"],
-    image: "/placeholder-2.jpg",
+    image: "/portfolio-2.webp",
     link: "#",
   },
   {
@@ -60,7 +60,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "BrandUp",
     description: "Лендинг для digital-агентства",
     technologies: ["Next.js", "Framer Motion", "Tailwind CSS"],
-    image: "/placeholder-3.jpg",
+    image: "/portfolio-3.webp",
     link: "#",
   },
   {
@@ -68,7 +68,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "FitLife",
     description: "Веб-приложение для фитнес-клуба",
     technologies: ["React", "Express", "PostgreSQL", "Docker"],
-    image: "/placeholder-4.jpg",
+    image: "/portfolio-4.webp",
     link: "#",
   },
   {
@@ -76,7 +76,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "EcoTrack",
     description: "Панель мониторинга экологии",
     technologies: ["TypeScript", "Next.js", "D3.js", "Prisma"],
-    image: "/placeholder-5.jpg",
+    image: "/portfolio-5.webp",
     link: "#",
   },
   {
@@ -84,7 +84,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "ChatHub",
     description: "Корпоративный мессенджер",
     technologies: ["React", "Node.js", "Socket.io", "Redis"],
-    image: "/placeholder-6.jpg",
+    image: "/portfolio-6.webp",
     link: "#",
   },
 ];
