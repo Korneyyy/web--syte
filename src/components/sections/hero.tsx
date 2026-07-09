@@ -66,7 +66,33 @@ export function Hero() {
             Портфолио
           </Button>
         </motion.div>
+
+        {/* Device image - mobile/tablet */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="block lg:hidden mt-8 w-full max-w-xs mx-auto lg:mx-0"
+          style={{
+            aspectRatio: '16 / 10',
+            backgroundImage: 'url(/hero-devices.png)',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+        />
       </div>
+
+      {/* Device image - desktop */}
+      <div
+        className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-full h-full max-w-2xl pointer-events-none"
+        style={{
+          backgroundImage: 'url(/hero-devices.png)',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'right center',
+        }}
+      />
     </section>
   );
 }

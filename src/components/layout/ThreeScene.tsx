@@ -20,15 +20,7 @@ export default function ThreeScene() {
           ease: "easeInOut",
         }}
       />
-      <div
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-full h-full max-w-lg md:max-w-xl lg:max-w-2xl hidden lg:block"
-        style={{
-          backgroundImage: 'url(/hero-devices.png)',
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'right center',
-        }}
-      />
+
     </div>
   )
 } 
