@@ -7,7 +7,7 @@ export const services: Service[] = [
     description: "Одностраничный сайт для презентации продукта или услуги. Высокая конверсия и современный дизайн.",
     features: ["Уникальный дизайн", "Адаптивная верстка", "SEO-оптимизация", "Скорость загрузки 95+"],
     icon: "Layout",
-    image: "/service-landing.webp",
+    image: "/lending.webp",
   },
   {
     id: "corporate",
