@@ -7,6 +7,7 @@ export const services: Service[] = [
     description: "Одностраничный сайт для презентации продукта или услуги. Высокая конверсия и современный дизайн.",
     features: ["Уникальный дизайн", "Адаптивная верстка", "SEO-оптимизация", "Скорость загрузки 95+"],
     icon: "Layout",
+    image: "/service-landing.webp",
   },
   {
     id: "corporate",
@@ -14,6 +15,7 @@ export const services: Service[] = [
     description: "Многостраничный сайт для бизнеса с каталогом услуг, новостями и контактами.",
     features: ["Каталог услуг", "Блог/Новости", "Форма обратной связи", "Панель управления"],
     icon: "Building2",
+    image: "/service-corporate.webp",
   },
   {
     id: "ecommerce",
@@ -21,6 +23,7 @@ export const services: Service[] = [
     description: "Полноценный интернет-магазин с корзиной, оплатой и личным кабинетом.",
     features: ["Каталог товаров", "Корзина и оплата", "Личный кабинет", "Админ-панель"],
     icon: "ShoppingCart",
+    image: "/service-ecommerce.webp",
   },
   {
     id: "webapp",
@@ -28,6 +31,7 @@ export const services: Service[] = [
     description: "Сложное веб-приложение с авторизацией, базой данных и реальным временем.",
     features: ["Авторизация", "База данных", "Real-time", "API интеграции"],
     icon: "AppWindow",
+    image: "/service-webapp.webp",
   },
   {
     id: "redesign",
@@ -35,6 +39,7 @@ export const services: Service[] = [
     description: "Модернизация существующего сайта: редизайн, новый функционал, оптимизация.",
     features: ["Редизайн", "Новый функционал", "Оптимизация", "Аудит"],
     icon: "RefreshCw",
+    image: "/service-redesign.webp",
   },
 ];
 
