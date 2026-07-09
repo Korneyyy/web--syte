@@ -28,10 +28,3 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
-
-export interface ContactFormData {
-  name: string;
-  telegram: string;
-  email: string;
-  description: string;
-}

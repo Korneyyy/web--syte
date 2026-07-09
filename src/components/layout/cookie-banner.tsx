@@ -4,22 +4,29 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
+type CookieChoice = "accepted" | "declined" | null;
+
 export function CookieBanner() {
-  const [accepted, setAccepted] = useState(true);
+  const [choice, setChoice] = useState<CookieChoice>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem("cookies-accepted");
-    if (!stored) setAccepted(false);
+    const stored = localStorage.getItem("cookies-accepted") as CookieChoice;
+    setChoice(stored);
   }, []);
 
   const accept = () => {
-    localStorage.setItem("cookies-accepted", "true");
-    setAccepted(true);
+    localStorage.setItem("cookies-accepted", "accepted");
+    setChoice("accepted");
+  };
+
+  const decline = () => {
+    localStorage.setItem("cookies-accepted", "declined");
+    setChoice("declined");
   };
 
   return (
     <AnimatePresence>
-      {!accepted && (
+      {!choice && (
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,9 +37,14 @@ export function CookieBanner() {
             <p className="text-sm text-light/60 text-center sm:text-left">
               Этот сайт использует cookie для улучшения работы. Продолжая использование сайта, вы соглашаетесь с этим.
             </p>
-            <Button size="sm" onClick={accept}>
-              Принять
-            </Button>
+            <div className="flex gap-2">
+              <Button size="sm" variant="outline" onClick={decline}>
+                Отказаться
+              </Button>
+              <Button size="sm" onClick={accept}>
+                Принять
+              </Button>
+            </div>
           </div>
         </motion.div>
       )}

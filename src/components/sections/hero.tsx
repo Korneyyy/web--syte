@@ -54,7 +54,7 @@ export function Hero() {
           className="block lg:hidden mt-8 w-full max-w-xs mx-auto lg:mx-0"
           style={{
             aspectRatio: '16 / 10',
-            backgroundImage: 'url(/hero-devices.png)',
+            backgroundImage: 'url(/hero-devices.webp)',
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
@@ -87,7 +87,7 @@ export function Hero() {
       <div
         className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-full h-full max-w-2xl pointer-events-none"
         style={{
-          backgroundImage: 'url(/hero-devices.png)',
+          backgroundImage: 'url(/hero-devices.webp)',
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'right center',

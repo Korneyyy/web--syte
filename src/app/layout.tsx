@@ -5,8 +5,8 @@ import { ScrollToTop } from "@/components/layout/scroll-to-top";
 import { FloatingTelegram } from "@/components/layout/floating-telegram";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { JsonLd } from "@/components/layout/json-ld";
+import DynamicStarfield from "@/components/layout/DynamicStarfield";
 import "./globals.css";
-import Starfield from "@/components/layout/Starfield"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,12 +25,37 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+  metadataBase: new URL("https://web-syte-five.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "Websyte — Разработка сайтов на заказ",
     description:
       "Создаю современные сайты и веб-приложения под ключ. Лендинги, корпоративные сайты, интернет-магазины.",
+    url: "https://web-syte-five.vercel.app",
+    siteName: "Websyte",
+    images: [
+      {
+        url: "/og.webp",
+        width: 1200,
+        height: 630,
+        alt: "Websyte — Разработка сайтов",
+      },
+    ],
     type: "website",
     locale: "ru_RU",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Websyte — Разработка сайтов на заказ",
+    description:
+      "Создаю современные сайты и веб-приложения под ключ. Лендинги, корпоративные сайты, интернет-магазины.",
+    images: ["/og.webp"],
   },
 };
 
@@ -47,7 +72,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-dark text-light antialiased font-sans overflow-x-hidden">
         <Preloader />
         <JsonLd />
-        <Starfield />
+        <DynamicStarfield />
         {children}
         <ScrollToTop />
         <FloatingTelegram />
