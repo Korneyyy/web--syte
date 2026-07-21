@@ -32,7 +32,7 @@ export function Preloader() {
             className="text-center"
           >
             <span className="text-3xl font-bold text-light">
-              websyte<span className="text-primary">.</span>
+              astraweb<span className="text-primary">.</span>
             </span>
             <motion.div
               initial={{ width: 0 }}

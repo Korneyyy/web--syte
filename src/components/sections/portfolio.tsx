@@ -24,18 +24,22 @@ export function Portfolio() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-dark-light/50 aspect-video"
-            style={{
-              backgroundImage: `url(${item.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-dark-light/50"
           >
+            <div
+              className="aspect-video"
+              style={{
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+
             {/* Gradient overlay for readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent" />
 
-            {/* Оверлей при hover */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-dark/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-6 text-center">
+            {/* Desktop: hover overlay */}
+            <div className="hidden md:flex absolute inset-0 flex-col items-center justify-center gap-3 bg-dark/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-6 text-center">
               <h3 className="text-lg font-semibold text-light">
                 {item.title}
               </h3>
@@ -53,8 +57,14 @@ export function Portfolio() {
               </a>
             </div>
 
-            {/* Название снизу (видно всегда) */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-dark/80 to-transparent">
+            {/* Mobile: description always visible */}
+            <div className="md:hidden absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-dark/90 to-transparent">
+              <h3 className="text-sm font-semibold text-light">{item.title}</h3>
+              <p className="mt-1 text-xs text-light/50 line-clamp-2">{item.description}</p>
+            </div>
+
+            {/* Desktop: title bar */}
+            <div className="hidden md:block absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-dark/80 to-transparent">
               <h3 className="text-sm font-medium text-light">{item.title}</h3>
             </div>
           </motion.div>

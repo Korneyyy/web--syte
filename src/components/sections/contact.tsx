@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Имя обязательно (минимум 2 символа)"),
+  phone: z.string().min(10, "Укажите номер телефона"),
   telegram: z.string().min(1, "Укажите Telegram"),
   email: z.string().email("Некорректный email"),
   description: z.string().min(10, "Опишите проект (минимум 10 символов)"),
@@ -62,7 +63,7 @@ export function Contact() {
       <div className="mx-auto max-w-xl">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-5 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8"
+          className="space-y-5 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-5 sm:p-8"
         >
           <div>
             <Input
@@ -71,6 +72,17 @@ export function Contact() {
             />
             {errors.name && (
               <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
+            )}
+          </div>
+
+          <div>
+            <Input
+              type="tel"
+              placeholder="Номер телефона"
+              {...register("phone")}
+            />
+            {errors.phone && (
+              <p className="mt-1 text-sm text-red-400">{errors.phone.message}</p>
             )}
           </div>
 

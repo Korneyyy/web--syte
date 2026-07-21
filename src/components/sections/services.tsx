@@ -30,7 +30,7 @@ export function Services() {
           >
             {/* Preview image */}
             <div
-              className="h-40 bg-dark-light/50"
+              className="h-28 sm:h-40 bg-dark-light/50"
               style={{
                 backgroundImage: `url(${service.image})`,
                 backgroundSize: 'cover',

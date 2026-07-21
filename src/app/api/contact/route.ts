@@ -6,9 +6,9 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, telegram, email, description } = body;
+    const { name, phone, telegram, email, description } = body;
 
-    if (!name || !telegram || !email || !description) {
+    if (!name || !phone || !telegram || !email || !description) {
       return NextResponse.json(
         { error: "Все поля обязательны" },
         { status: 400 }
@@ -23,8 +23,9 @@ export async function POST(request: Request) {
     }
 
     const message = [
-      "📩 <b>Новая заявка с websyte</b>\n",
+      "📩 <b>Новая заявка с astraweb</b>\n",
       `<b>Имя:</b> ${name}`,
+      `<b>Телефон:</b> ${phone}`,
       `<b>Telegram:</b> ${telegram}`,
       `<b>Email:</b> ${email}`,
       `<b>Описание:</b> ${description}`,

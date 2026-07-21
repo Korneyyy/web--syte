@@ -15,7 +15,7 @@ export const services: Service[] = [
     description: "Многостраничный сайт для бизнеса с каталогом услуг, новостями и контактами.",
     features: ["Каталог услуг", "Блог/Новости", "Форма обратной связи", "Панель управления"],
     icon: "Building2",
-    image: "/service-corporate.webp",
+    image: "/service-corporate.jpg",
   },
   {
     id: "ecommerce",
@@ -23,7 +23,7 @@ export const services: Service[] = [
     description: "Полноценный интернет-магазин с корзиной, оплатой и личным кабинетом.",
     features: ["Каталог товаров", "Корзина и оплата", "Личный кабинет", "Админ-панель"],
     icon: "ShoppingCart",
-    image: "/service-ecommerce.webp",
+    image: "/service-ecommerce.jpg",
   },
   {
     id: "webapp",
@@ -31,7 +31,7 @@ export const services: Service[] = [
     description: "Сложное веб-приложение с авторизацией, базой данных и реальным временем.",
     features: ["Авторизация", "База данных", "Real-time", "API интеграции"],
     icon: "AppWindow",
-    image: "/service-webapp.webp",
+    image: "/service-webapp.jpg",
   },
   {
     id: "redesign",
@@ -39,7 +39,7 @@ export const services: Service[] = [
     description: "Модернизация существующего сайта: редизайн, новый функционал, оптимизация.",
     features: ["Редизайн", "Новый функционал", "Оптимизация", "Аудит"],
     icon: "RefreshCw",
-    image: "/service-redesign.webp",
+    image: "/service-redesign.jpg",
   },
 ];
 
@@ -134,7 +134,7 @@ export const faqItems: FaqItem[] = [
   {
     id: "faq-2",
     question: "Сколько стоит разработка сайта?",
-    answer: "Стоимость зависит от сложности. Лендинг — от 30 000 ₽, корпоративный сайт — от 60 000 ₽, интернет-магазин — от 120 000 ₽. Точную цену назову после обсуждения.",
+    answer: "Стоимость зависит от сложности. Лендинг — от 25 000 ₽, корпоративный сайт — от 40 000 ₽, интернет-магазин — от 80 000 ₽. Точную цену назову после обсуждения.",
   },
   {
     id: "faq-3",
@@ -171,6 +171,8 @@ export const technologies = [
   { name: "MongoDB", icon: "Database" },
   { name: "Docker", icon: "Container" },
   { name: "Git", icon: "GitBranch" },
+  { name: "Python", icon: "FileCode" },
+  { name: "Django", icon: "Layers" },
 ];
 
 export const whyMeCards = [

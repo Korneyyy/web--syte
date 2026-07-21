@@ -32,6 +32,12 @@ export function Header() {
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
+    if (isMobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
   }, [isMobileOpen]);
 
   return (
@@ -45,7 +51,7 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="#" className="text-xl font-bold text-light">
-          websyte<span className="text-primary">.</span>
+          astraweb<span className="text-primary">.</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -88,7 +94,7 @@ export function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="py-2 text-light/60 transition-colors hover:text-light"
+                  className="py-3 text-base text-light/60 transition-colors hover:text-light"
                 >
                   {link.label}
                 </a>

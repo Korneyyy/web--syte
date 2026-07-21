@@ -13,6 +13,7 @@ import {
   Database,
   Container,
   GitBranch,
+  Layers,
 } from "lucide-react";
 import { technologies } from "@/data";
 import { Section } from "@/components/ui/section";
@@ -28,6 +29,7 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
   Database,
   Container,
   GitBranch,
+  Layers,
 };
 
 const categories = [
@@ -40,7 +42,7 @@ const categories = [
   {
     label: "Backend",
     items: technologies.filter((t) =>
-      ["Node.js", "Express", "PostgreSQL", "MongoDB"].includes(t.name)
+      ["Node.js", "Express", "PostgreSQL", "MongoDB", "Python", "Django"].includes(t.name)
     ),
   },
   {

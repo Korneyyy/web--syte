@@ -22,7 +22,7 @@ export function Section({ id, title, subtitle, children, className, muted }: Sec
     <section
       id={id}
       ref={ref}
-      className={cn("py-20 md:py-28", muted && "bg-white/[0.015]", className)}
+      className={cn("py-14 md:py-20 lg:py-28", muted && "bg-white/[0.015]", className)}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
@@ -30,7 +30,7 @@ export function Section({ id, title, subtitle, children, className, muted }: Sec
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
+            className="mb-10 md:mb-16 text-center"
           >
             {title && (
               <h2 className="text-3xl font-bold text-light md:text-4xl lg:text-5xl">

@@ -8,6 +8,7 @@ import { Portfolio } from "@/components/sections/portfolio";
 import { Technologies } from "@/components/sections/technologies";
 import { Reviews } from "@/components/sections/reviews";
 import { FaqSection } from "@/components/sections/faq-section";
+import { Calculator } from "@/components/sections/calculator";
 import { Contact } from "@/components/sections/contact";
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
         <div className="bg-white/[0.015]"><Portfolio /></div>
         <Technologies />
         <div className="bg-white/[0.015]"><Reviews /></div>
+        <Calculator />
         <FaqSection />
         <div className="bg-white/[0.015]"><Contact /></div>
       </main>

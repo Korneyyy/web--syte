@@ -21,16 +21,19 @@ export function Reviews() {
     return () => clearInterval(timer);
   }, [paused]);
 
-  const visible = (() => {
-    if (typeof window !== "undefined" && window.innerWidth >= 768) {
-      const items = [];
-      for (let i = 0; i < Math.min(2, reviews.length); i++) {
-        items.push(reviews[(current + i) % reviews.length]);
-      }
-      return items;
-    }
-    return [reviews[current]];
-  })();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  const visible = isDesktop
+    ? [reviews[current], reviews[(current + 1) % reviews.length]]
+    : [reviews[current]];
 
   return (
     <Section
