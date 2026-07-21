@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, MessageCircle, Phone } from "lucide-react";
+import { useScrollPastHero } from "@/hooks/use-scroll-past-hero";
+import { cn } from "@/lib/utils";
 
 const notifications = [
   { name: "Алексей", city: "Москва", action: "оставил заявку", icon: FileText },
@@ -29,6 +31,7 @@ const timeAgo = [
 export function SocialProof() {
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(false);
+  const past = useScrollPastHero();
 
   useEffect(() => {
     let count = 0;
@@ -59,7 +62,10 @@ export function SocialProof() {
   const time = timeAgo[current % timeAgo.length];
 
   return (
-    <div className="fixed bottom-36 sm:bottom-20 left-4 sm:left-6 z-50 pointer-events-none">
+    <div className={cn(
+      "fixed bottom-28 left-6 z-50 pointer-events-none transition-opacity duration-500",
+      past ? "sm:opacity-100" : "opacity-0 sm:opacity-100"
+    )}>
       <AnimatePresence>
         {visible && (
           <motion.div

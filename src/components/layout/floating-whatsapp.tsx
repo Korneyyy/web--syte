@@ -1,12 +1,20 @@
 "use client";
 
+import { useScrollPastHero } from "@/hooks/use-scroll-past-hero";
+import { cn } from "@/lib/utils";
+
 export function FloatingWhatsApp() {
+  const past = useScrollPastHero();
+
   return (
     <a
       href="https://wa.me/79385346923"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+      className={cn(
+        "fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110",
+        past ? "" : "opacity-0 pointer-events-none sm:opacity-100 sm:pointer-events-auto"
+      )}
       style={{
         backgroundColor: "#25D366",
         boxShadow: "0 4px 14px rgba(37, 211, 102, 0.4)",
