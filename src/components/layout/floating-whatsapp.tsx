@@ -6,7 +6,7 @@ export function FloatingWhatsApp() {
       href="https://wa.me/79385346923"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-20 sm:bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+      className="fixed bottom-28 sm:bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all duration-300 hover:scale-110"
       style={{
         backgroundColor: "#25D366",
         boxShadow: "0 4px 14px rgba(37, 211, 102, 0.4)",

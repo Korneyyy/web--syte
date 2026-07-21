@@ -59,7 +59,7 @@ export function SocialProof() {
   const time = timeAgo[current % timeAgo.length];
 
   return (
-    <div className="fixed top-20 left-4 sm:bottom-20 sm:top-auto sm:left-6 z-50 pointer-events-none">
+    <div className="fixed bottom-36 sm:bottom-20 left-4 sm:left-6 z-50 pointer-events-none">
       <AnimatePresence>
         {visible && (
           <motion.div
