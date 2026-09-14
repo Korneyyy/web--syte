@@ -4,29 +4,32 @@ import { sendTelegramMessage } from "@/lib/telegram";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, phone, telegram, email, description } = body;
+    const { name, role, text } = body;
 
-    if (!name || !phone || !telegram || !email || !description) {
+    if (!name || !text) {
       return NextResponse.json(
-        { error: "Все поля обязательны" },
+        { error: "Имя и отзыв обязательны" },
         { status: 400 }
       );
     }
 
     const message = [
-      "📩 <b>Новая заявка с astraweb</b>\n",
+      "⭐ <b>Новый отзыв с astraweb</b>\n",
       `<b>Имя:</b> ${name}`,
-      `<b>Телефон:</b> ${phone}`,
-      `<b>Telegram:</b> ${telegram}`,
-      `<b>Email:</b> ${email}`,
-      `<b>Описание:</b> ${description}`,
-    ].join("\n");
+      role ? `<b>Компания/роль:</b> ${role}` : null,
+      `<b>Отзыв:</b> ${text}`,
+    ]
+      .filter((line): line is string => line !== null)
+      .join("\n");
 
     const status = await sendTelegramMessage(message);
 
     return NextResponse.json({
       success: true,
-      message: status === "sent" ? "Заявка отправлена!" : "Заявка получена (демо-режим)",
+      message:
+        status === "sent"
+          ? "Спасибо! Отзыв отправлен на проверку."
+          : "Отзыв получен (демо-режим)",
     });
   } catch {
     return NextResponse.json(
