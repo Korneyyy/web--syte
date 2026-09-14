@@ -7,6 +7,7 @@ import { FloatingWhatsApp } from "@/components/layout/floating-whatsapp";
 import { SocialProof } from "@/components/layout/social-proof";
 import { CookieBanner } from "@/components/layout/cookie-banner";
 import { JsonLd } from "@/components/layout/json-ld";
+import { TelegramMiniApp } from "@/components/layout/telegram-mini-app";
 import DynamicStarfield from "@/components/layout/DynamicStarfield";
 import "./globals.css";
 
@@ -74,6 +75,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-dark text-light antialiased font-sans overflow-x-hidden">
         <Preloader />
         <JsonLd />
+        <TelegramMiniApp />
         <DynamicStarfield />
         {children}
         <ScrollToTop />
