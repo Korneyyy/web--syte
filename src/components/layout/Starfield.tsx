@@ -219,12 +219,13 @@ export default function Starfield() {
     }
 
     let animId: number
-    const clock = new THREE.Clock()
+    const timer = new THREE.Timer()
 
     const animate = () => {
       animId = requestAnimationFrame(animate)
-      const dt = clock.getDelta()
-      const t = clock.getElapsedTime()
+      timer.update()
+      const dt = timer.getDelta()
+      const t = timer.getElapsed()
 
       // Far + Mid — обновление позиций
       for (const mesh of [far, mid]) {
