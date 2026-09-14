@@ -82,6 +82,12 @@ function generateLayer(p: StarParams) {
   return { positions, colors }
 }
 
+interface LayerMesh extends THREE.Points {
+  _speed: number
+  _zMin: number
+  _zMax: number
+}
+
 function makePoints(
   layer: ReturnType<typeof generateLayer>,
   size: number,
@@ -89,7 +95,7 @@ function makePoints(
   speed: number,
   zMin: number,
   zMax: number
-) {
+): LayerMesh {
   const geo = new THREE.BufferGeometry()
   geo.setAttribute("position", new THREE.BufferAttribute(layer.positions, 3))
   geo.setAttribute("color", new THREE.BufferAttribute(layer.colors, 3))
@@ -103,10 +109,10 @@ function makePoints(
     blending: THREE.AdditiveBlending,
     depthWrite: false,
   })
-  const mesh = new THREE.Points(geo, mat)
-  ;(mesh as any)._speed = speed
-  ;(mesh as any)._zMin = zMin
-  ;(mesh as any)._zMax = zMax
+  const mesh = new THREE.Points(geo, mat) as unknown as LayerMesh
+  mesh._speed = speed
+  mesh._zMin = zMin
+  mesh._zMax = zMax
   return mesh
 }
 
@@ -125,6 +131,12 @@ interface NearStar {
   speed: number
   zMin: number
   zMax: number
+}
+
+interface GlowStar {
+  sprite: THREE.Sprite
+  phase: number
+  speed: number
 }
 
 export default function Starfield() {
@@ -190,7 +202,7 @@ export default function Starfield() {
     }
 
     // Glow stars — яркие звёзды с ореолом
-    const glowStars: THREE.Sprite[] = []
+    const glowStars: GlowStar[] = []
     for (let i = 0; i < 10; i++) {
       const mat = new THREE.SpriteMaterial({
         map: glowTex,
@@ -206,8 +218,8 @@ export default function Starfield() {
         -50 - Math.random() * 200
       )
       sprite.scale.setScalar(1.0 + Math.random() * 2.0)
-      ;(sprite as any)._phase = Math.random() * Math.PI * 2
-      ;(sprite as any)._speed = 0.3 + Math.random() * 0.3
+      const phase = Math.random() * Math.PI * 2
+      const speed = 0.3 + Math.random() * 0.3
       const c = new THREE.Color().setHSL(
         [0.0, 0.03, 0.08, 0.1, 0.6, 0.7][Math.floor(Math.random() * 6)],
         0.4,
@@ -215,7 +227,7 @@ export default function Starfield() {
       )
       sprite.material.color = c
       scene.add(sprite)
-      glowStars.push(sprite)
+      glowStars.push({ sprite, phase, speed })
     }
 
     let animId: number
@@ -229,11 +241,10 @@ export default function Starfield() {
 
       // Far + Mid — обновление позиций
       for (const mesh of [far, mid]) {
-        const m = mesh as any
         const pos = mesh.geometry.attributes.position.array as Float32Array
-        const speed = m._speed
-        const zMin = m._zMin
-        const zMax = m._zMax
+        const speed = mesh._speed
+        const zMin = mesh._zMin
+        const zMax = mesh._zMax
         const zRange = zMax - zMin
         for (let i = 2; i < pos.length; i += 3) {
           pos[i] += speed * dt * 60
@@ -258,9 +269,8 @@ export default function Starfield() {
       }
 
       // Glow — пульсация
-      for (const s of glowStars) {
-        const spr = s as any
-        spr.material.opacity = 0.4 + 0.5 * (0.5 + 0.5 * Math.sin(t * spr._speed * 2 + spr._phase))
+      for (const gs of glowStars) {
+        gs.sprite.material.opacity = 0.4 + 0.5 * (0.5 + 0.5 * Math.sin(t * gs.speed * 2 + gs.phase))
       }
 
       renderer.render(scene, camera)
