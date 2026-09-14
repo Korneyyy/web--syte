@@ -39,7 +39,15 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-white/10 pt-6 text-center text-sm text-light/30">
-          © {new Date().getFullYear()} astraweb. Все права защищены.
+          <p>
+            © {new Date().getFullYear()} astraweb. Все права защищены.
+          </p>
+          <a
+            href="/privacy"
+            className="mt-2 inline-block text-light/40 underline decoration-white/10 underline-offset-4 transition-colors hover:text-light"
+          >
+            Политика конфиденциальности
+          </a>
         </div>
       </div>
     </footer>

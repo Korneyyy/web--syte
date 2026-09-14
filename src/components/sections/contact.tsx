@@ -68,6 +68,7 @@ export function Contact() {
           <div>
             <Input
               placeholder="Ваше имя"
+              aria-label="Ваше имя"
               {...register("name")}
             />
             {errors.name && (
@@ -79,6 +80,7 @@ export function Contact() {
             <Input
               type="tel"
               placeholder="Номер телефона"
+              aria-label="Номер телефона"
               {...register("phone")}
             />
             {errors.phone && (
@@ -89,6 +91,7 @@ export function Contact() {
           <div>
             <Input
               placeholder="Telegram (@username)"
+              aria-label="Telegram"
               {...register("telegram")}
             />
             {errors.telegram && (
@@ -100,6 +103,7 @@ export function Contact() {
             <Input
               type="email"
               placeholder="Email"
+              aria-label="Email"
               {...register("email")}
             />
             {errors.email && (
@@ -110,6 +114,7 @@ export function Contact() {
           <div>
             <Textarea
               placeholder="Опишите ваш проект"
+              aria-label="Описание проекта"
               {...register("description")}
             />
             {errors.description && (

@@ -60,7 +60,11 @@ function ReviewForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <Input placeholder="Ваше имя" {...register("name")} />
+            <Input
+              placeholder="Ваше имя"
+              aria-label="Ваше имя"
+              {...register("name")}
+            />
             {errors.name && (
               <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
             )}
@@ -68,12 +72,17 @@ function ReviewForm() {
           <div>
             <Input
               placeholder="Компания / роль (необязательно)"
+              aria-label="Компания или роль"
               {...register("role")}
             />
           </div>
         </div>
         <div>
-          <Textarea placeholder="Ваш отзыв" {...register("text")} />
+          <Textarea
+            placeholder="Ваш отзыв"
+            aria-label="Ваш отзыв"
+            {...register("text")}
+          />
           {errors.text && (
             <p className="mt-1 text-sm text-red-400">{errors.text.message}</p>
           )}
@@ -176,6 +185,7 @@ export function Reviews() {
         <div className="mt-6 flex items-center justify-center gap-4">
           <button
             onClick={() => { setPaused(true); prev(); }}
+            aria-label="Предыдущий отзыв"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-light/40 transition-colors hover:border-primary hover:text-primary cursor-pointer"
           >
             <ChevronLeft size={18} />
@@ -195,6 +205,7 @@ export function Reviews() {
           </div>
           <button
             onClick={() => { setPaused(true); next(); }}
+            aria-label="Следующий отзыв"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-light/40 transition-colors hover:border-primary hover:text-primary cursor-pointer"
           >
             <ChevronRight size={18} />

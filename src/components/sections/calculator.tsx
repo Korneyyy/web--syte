@@ -37,12 +37,18 @@ const features = [
 ];
 
 function AnimatedPrice({ value }: { value: number }) {
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
   const raf = useRef<number>(0);
+  const lastValue = useRef(value);
 
   useEffect(() => {
-    const start = display;
+    const start = lastValue.current;
     const diff = value - start;
+    if (diff === 0) {
+      lastValue.current = value;
+      return;
+    }
+
     const duration = 600;
     const startTime = performance.now();
 
@@ -51,7 +57,11 @@ function AnimatedPrice({ value }: { value: number }) {
       const progress = Math.min(elapsed / duration, 1);
       const ease = 1 - Math.pow(1 - progress, 3);
       setDisplay(Math.round(start + diff * ease));
-      if (progress < 1) raf.current = requestAnimationFrame(animate);
+      if (progress < 1) {
+        raf.current = requestAnimationFrame(animate);
+      } else {
+        lastValue.current = value;
+      }
     };
 
     raf.current = requestAnimationFrame(animate);
@@ -80,11 +90,16 @@ export function Calculator() {
     );
   }, []);
 
-  const basePrice = siteTypes.find((s) => s.id === siteType)?.price ?? 0;
-  const pageMultiplier = pageOptions.find((p) => p.id === pageCount)?.multiplier ?? 1;
+  const selectedType = siteTypes.find((s) => s.id === siteType);
+  const selectedPages = pageOptions.find((p) => p.id === pageCount);
+  const basePrice = selectedType?.price ?? 0;
+  const pageMultiplier = selectedPages?.multiplier ?? 1;
   const featuresPrice = features
     .filter((f) => selectedFeatures.includes(f.id))
     .reduce((sum, f) => sum + f.price, 0);
+  const withPages = basePrice * pageMultiplier;
+  const subtotal = withPages + featuresPrice;
+  const urgencyAdd = urgent ? subtotal * 0.5 : 0;
   const urgencyMultiplier = urgent ? 1.5 : 1;
   const total = Math.round((basePrice * pageMultiplier + featuresPrice) * urgencyMultiplier);
 
@@ -116,6 +131,7 @@ export function Calculator() {
                   <button
                     key={type.id}
                     onClick={() => setSiteType(type.id)}
+                    aria-pressed={active}
                     className={`group relative flex flex-col items-center gap-3 rounded-2xl border p-5 text-center transition-all duration-300 cursor-pointer ${
                       active
                         ? "border-primary bg-primary/10 shadow-lg shadow-primary/10"
@@ -160,6 +176,7 @@ export function Calculator() {
                   <button
                     key={opt.id}
                     onClick={() => setPageCount(opt.id)}
+                    aria-pressed={active}
                     className={`rounded-2xl border px-4 py-4 text-center transition-all duration-300 cursor-pointer ${
                       active
                         ? "border-primary bg-primary/10 shadow-lg shadow-primary/10"
@@ -196,6 +213,7 @@ export function Calculator() {
                   <button
                     key={feat.id}
                     onClick={() => toggleFeature(feat.id)}
+                    aria-pressed={active}
                     className={`flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium transition-all duration-300 cursor-pointer ${
                       active
                         ? "border-primary bg-primary/10 text-light shadow-lg shadow-primary/10"
@@ -224,6 +242,7 @@ export function Calculator() {
             </p>
             <button
               onClick={() => setUrgent((v) => !v)}
+              aria-pressed={urgent}
               className={`flex items-center gap-4 rounded-2xl border px-6 py-4 transition-all duration-300 cursor-pointer ${
                 urgent
                   ? "border-amber-500/50 bg-amber-500/10 shadow-lg shadow-amber-500/10"
@@ -277,6 +296,34 @@ export function Calculator() {
               <div className="mt-3 text-3xl sm:text-5xl md:text-6xl font-bold text-light">
                 <AnimatedPrice value={total} />
               </div>
+
+              <div className="mx-auto mt-6 max-w-sm space-y-2 rounded-2xl border border-white/5 bg-dark-light/30 p-5 text-left text-sm">
+                <div className="flex items-center justify-between text-light/60">
+                  <span>{selectedType?.label}</span>
+                  <span>{basePrice.toLocaleString("ru-RU")} ₽</span>
+                </div>
+                <div className="flex items-center justify-between text-light/60">
+                  <span>Страниц ({selectedPages?.label})</span>
+                  <span>×{pageMultiplier}</span>
+                </div>
+                {featuresPrice > 0 && (
+                  <div className="flex items-center justify-between text-light/60">
+                    <span>Доп. функционал</span>
+                    <span>+{featuresPrice.toLocaleString("ru-RU")} ₽</span>
+                  </div>
+                )}
+                {urgent && (
+                  <div className="flex items-center justify-between text-light/60">
+                    <span>Срочность</span>
+                    <span>+{urgencyAdd.toLocaleString("ru-RU")} ₽</span>
+                  </div>
+                )}
+                <div className="border-t border-white/10 pt-2 flex items-center justify-between font-semibold text-light">
+                  <span>Итого</span>
+                  <span>{total.toLocaleString("ru-RU")} ₽</span>
+                </div>
+              </div>
+
               <p className="mt-4 text-sm text-light/40">
                 Точную цену назову после обсуждения деталей проекта
               </p>

@@ -1,11 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Images, X } from "lucide-react";
 import { portfolioItems } from "@/data";
 import { Section } from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
+
+const IMAGE_PLACEHOLDER =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAGElEQVR4nGOQ07QmCTGMatAcDSW54Zo0AAG5ggG65vZZAAAAAElFTkSuQmCC";
 
 export function Portfolio() {
   const [item, setItem] = useState<(typeof portfolioItems)[number] | null>(null);
@@ -65,14 +69,18 @@ export function Portfolio() {
             transition={{ duration: 0.5 }}
             className="group relative w-full overflow-hidden rounded-2xl border border-white/10 bg-dark-light/50 text-left cursor-pointer"
           >
-            <div
-              className="aspect-video"
-              style={{
-                backgroundImage: `url(${project.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "top center",
-              }}
-            />
+            <div className="relative aspect-video overflow-hidden bg-dark-light/50">
+              <Image
+                src={project.image}
+                alt={`${project.title} — обложка проекта`}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={IMAGE_PLACEHOLDER}
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
 
             <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent" />
 
